@@ -1,0 +1,17 @@
+imports:
+  - { resource: services.yaml }
+
+services:
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  App\Tools\Faker\UuidV4Faker:
+    tags: [ { name: nelmio_alice.faker.provider } ]
+
+  app.fixtures.reflection_property_accessor:
+    class: Nelmio\Alice\PropertyAccess\ReflectionPropertyAccessor
+    public: false
+    decorates: nelmio_alice.property_accessor
+    decoration_priority: -10
+    arguments: ['@app.fixtures.reflection_property_accessor.inner']

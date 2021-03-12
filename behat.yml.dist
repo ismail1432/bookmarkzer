@@ -1,0 +1,17 @@
+default:
+    suites:
+        default:
+            contexts:
+                - App\Tests\Behat\FixtureContext
+                - App\Tests\Behat\ErrorHandlerContext
+                - Behat\MinkExtension\Context\MinkContext
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/bootstrap.php
+        Behat\MinkExtension:
+            base_url: https://bookmarkland.docker/
+            default_session: default
+            sessions:
+                default:
+                    symfony: ~

@@ -1,0 +1,41 @@
+App\Entity\Bookmark:
+  bookmark (template):
+    uuid: <uuidv4()>
+    title: 'bookmark_<current()>'
+    author: '<firstName()>'
+    height: '<numberBetween(0,20)>'
+    width: '<numberBetween(0,20)>'
+    created_at: <(new \DateTime('2018-06-01'))>
+    url: 'www.such-url-<current()>-awesome.com'
+
+  bookmark_{1..20} (extends bookmark):
+    type: 'video'
+    duration: '<numberBetween(0,360)>'
+    tags: ['fun', 'sport']
+
+  bookmark_{21..40} (extends bookmark):
+    type: 'photo'
+    tags: [ 'hobbies', 'travel' ]
+
+  bookmark_4242:
+    uuid: <uuidv4()>
+    title: 'such a title for video'
+    author: 'smaone'
+    type: 'video'
+    height: '420'
+    width: '240'
+    duration: '60'
+    url: www.super.fr
+    tags: ['sport']
+    created_at: <(new \DateTime('2020-06-01'))>
+
+  bookmark_9090:
+    uuid: <uuidv4()>
+    title: 'such a title for photo'
+    author: 'joey'
+    type: 'photo'
+    height: '18'
+    width: '24'
+    url: www.genius.fr
+    tags: [ 'travel' ]
+    created_at: <(new \DateTime('2021-06-01'))>
