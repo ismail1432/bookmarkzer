@@ -2,4 +2,17 @@
 
 
 ## Description
-The skeleton of this application comes from [this repository](https://github.com/tegbessou/skeleton)
+
+Bookmark application
+
+### Installation 
+
+`git clone git@github.com:ismail1432/bookmarkzer.git`
+
+`cd bookmarker`
+
+`make up`
+
+### Test
+
+`make behat`
