@@ -4,10 +4,11 @@ namespace App\Entity;
 
 use App\Repository\BookmarkRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Uid\Uuid;
 use Guikingone\SymfonyUid\Doctrine\Uuid\UuidGenerator;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Uid\UuidV4;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BookmarkRepository::class)
@@ -20,6 +21,8 @@ class Bookmark
     ];
 
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -31,11 +34,11 @@ class Bookmark
      *
      * @ORM\Column(name="uuid", type="uuid", unique=true)
      * @ORM\CustomIdGenerator(class=UuidGenerator::class)
-     *
      */
     private $uuid;
 
     /**
+     * @var string
      *
      * @ORM\Column(type="string", length=255)
      *
@@ -46,6 +49,8 @@ class Bookmark
     private $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank
@@ -61,6 +66,8 @@ class Bookmark
     private $createdAt;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank
@@ -69,6 +76,8 @@ class Bookmark
     private $url;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      *
      * @Assert\NotBlank
@@ -77,6 +86,7 @@ class Bookmark
     private $height;
 
     /**
+     * @var int
      * @ORM\Column(type="integer")
      *
      * @Assert\NotBlank
@@ -85,25 +95,38 @@ class Bookmark
     private $width;
 
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"bookmark:read", "bookmark:write"})
      */
     private $duration;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\Choice(choices=Bookmark::TYPES, message="Choose a valid type.")
+     * @Assert\NotBlank
      * @Groups({"bookmark:read", "bookmark:write"})
      */
     private $type;
 
     /**
+     * @var array
+     * 
      * @ORM\Column(type="array", length=255)
      *
      * @Groups({"bookmark:read", "bookmark:write"})
      */
     private $tags;
+
+    public function __construct()
+    {
+        $this->uuid = UuidV4::v4();
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -223,15 +246,12 @@ class Bookmark
         return $this->uuid;
     }
 
-    public function updateFromPayload(Bookmark $bookmark): self
+    public function updateFromPayload(array $data): self
     {
-        $this->type = $bookmark->getType();
-        $this->author = $bookmark->getAuthor();
-        $this->tags = $bookmark->getTags();
-        $this->url = $bookmark->getUrl();
-        $this->title = $bookmark->getTitle();
-        $this->duration = $bookmark->getDuration();
-        $this->width = $bookmark->getWidth();
-        $this->height = $bookmark->getHeight();
+        foreach ($data as $key => $value) {
+            $this->{$key} = $value;
+        }
+
+        return $this;
     }
 }

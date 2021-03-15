@@ -12,7 +12,9 @@ class ConstraintViolationNormalizer implements DenormalizerInterface
 
     public function denormalize($data, $type, $format = null, array $context = [])
     {
-        dump($data);die;
+        dump($data);
+        die;
+
         return $data;
     }
 
