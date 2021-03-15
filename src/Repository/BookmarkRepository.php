@@ -18,4 +18,14 @@ class BookmarkRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Bookmark::class);
     }
+
+    public function findByUuid(string $uuid): ?Bookmark
+    {
+        return $this->createQueryBuilder('bookmark')
+            ->where('bookmark.uuid = :uuid')
+            ->setParameter(':uuid', $uuid)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }

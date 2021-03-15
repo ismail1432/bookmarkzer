@@ -14,6 +14,9 @@
     "behat/transliterator": {
         "version": "v1.3.0"
     },
+    "behatch/contexts": {
+        "version": "3.3.0"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99"
     },
@@ -151,6 +154,9 @@
     },
     "instaclick/php-webdriver": {
         "version": "1.4.7"
+    },
+    "justinrainbow/json-schema": {
+        "version": "5.2.10"
     },
     "laminas/laminas-code": {
         "version": "3.4.1"

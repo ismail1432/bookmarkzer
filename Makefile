@@ -114,12 +114,9 @@ unit-test: ## Launch unit test
 	@echo "\nLaunching unit tests\e[0m"
 	@$(EXEC_PHP) bin/phpunit
 
-behat: vendor db-load-fixtures ## Launch behat
+behat: db-load-fixtures ## Launch behat
 	@echo "\nLaunching read-only behat tests...\e[0m"
-	@$(EXEC_PHP) vendor/bin/behat --strict --format=progress --tags="@read-only"
-
-	@echo "\nLaunching other behat tests...\e[0m"
-	@$(EXEC_PHP) vendor/bin/behat --strict --format=progress --tags="~@read-only"
+	@$(EXEC_PHP) vendor/bin/behat --strict --format=progress --profile=default
 
 .PHONY: behat
 
