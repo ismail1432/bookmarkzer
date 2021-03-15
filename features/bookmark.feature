@@ -8,8 +8,64 @@ Feature: Bookmark CRUD
   # CRUD scenario #
   #################
   @get
-  Scenario: I should be able to read a Beneficiary
-    Given I send a "GET" request to "/bookmarks/5ef4be34-fecc-4f33-98da-ef6c62b1d85d"
+  Scenario: I should be able to read a Bookmark
+    Given I send a "GET" request to "/bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77"
     Then the response status code should be 200
     And the JSON nodes should be equal to:
-      | title                                | 1                                              |
+      | title     | bookmark_1                                      |
+      | author    | Adah                                            |
+      | createdAt | 2018-06-01T00:00:00+00:00                       |
+      | url       | www.such-url-1-awesome.com                      |
+      | height    | 15                                              |
+      | width     | 19                                              |
+      | duration  | 358                                             |
+      | type      | video                                           |
+      | tags[0]   | fun                                             |
+      | tags[1]   | sport                                           |
+      | @id       | /bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77 |
+
+  @put
+  Scenario: I should be able to read a Bookmark
+    Given I send a "PUT" request to "/bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77" with body:
+    """
+    {
+      "title": "bookmark_1 update",
+	  "author": "Adah update",
+	  "url": "www.such-url-1-update.com",
+	  "height": 25,
+	  "width": 49,
+	  "duration": 180
+    }
+    """
+    And the JSON nodes should be equal to:
+      | title     | bookmark_1 update         |
+      | author    | Adah update               |
+      | createdAt | 2018-06-01T00:00:00+00:00 |
+      | url       | www.such-url-1-update.com |
+      | height    | 25                        |
+      | width     | 49                        |
+      | duration  | 180                       |
+    Then the response status code should be 201
+
+  @post
+  Scenario: I should be able to read a list of Bookmark
+    Given I send a "POST" request to "/bookmarks" with body:
+    """
+    {
+      "title": "Da bookmark creation"
+	  "author": "new author",
+	  "url": "www.such-url-1-create.com",
+	  "height": 54,
+	  "width": 89,
+	  "duration": 720
+    }
+    """
+    And the JSON nodes should be equal to:
+      | title     | Da bookmark creation      |
+      | author    | new author                |
+      | url       | www.such-url-1-create.com |
+      | height    | 54                        |
+      | width     | 89                        |
+      | duration  | 720                       |
+    Then the response status code should be 200
+
