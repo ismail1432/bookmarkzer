@@ -6,14 +6,25 @@ use App\Entity\Bookmark;
 
 class BookmarkHandler
 {
-    public static function hydrate(Bookmark $bookmark): Bookmark
-    {
-        $properties = BookmarkProperty::createFromLink($bookmark->getUrl());
+    private $bookmarkProperty;
 
-        $bookmark->setAuthor($properties->author);
-        $bookmark->setTitle($properties->title);
-        $bookmark->setWidth($properties->width);
-        $bookmark->setHeight($properties->height);
+    public function __construct(BookmarkPropertyInterface $bookmarkProperty)
+    {
+        $this->bookmarkProperty = $bookmarkProperty;
+    }
+
+    public function hydrate(Bookmark $bookmark, array $data = []): Bookmark
+    {
+        foreach ($data as $key => $value) {
+            $bookmark->{$key} = $value;
+        }
+
+        $properties = $this->bookmarkProperty::createFromLink($bookmark->getUrl());
+
+        $bookmark->author = $properties->author;
+        $bookmark->title = $properties->title;
+        $bookmark->width = $properties->width;
+        $bookmark->height = $properties->height;
 
         return $bookmark;
     }

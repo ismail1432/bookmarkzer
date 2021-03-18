@@ -39,7 +39,7 @@ Feature: Bookmark CRUD
     {
       "title": "bookmark_1 edited",
 	  "author": "Adah edited",
-	  "url": "www.such-url-1-edited.com",
+	  "url": "www.such-url-update.com",
 	  "height": 25,
 	  "width": 49,
 	  "duration": 180
@@ -49,7 +49,7 @@ Feature: Bookmark CRUD
       | title     | bookmark_1 edited         |
       | author    | Adah edited               |
       | createdAt | 2018-06-01T00:00:00+00:00 |
-      | url       | www.such-url-1-edited.com |
+      | url       | www.such-url-update.com   |
       | height    | 25                        |
       | width     | 49                        |
       | duration  | 180                       |
@@ -63,7 +63,7 @@ Feature: Bookmark CRUD
     {
       "title": "Da bookmark creation",
 	  "author": "new author",
-	  "url": "www.such-url-1-create.com",
+	  "url": "www.such-dummy.com",
 	  "height": 54,
 	  "width": 89,
 	  "duration": 720,
@@ -73,7 +73,7 @@ Feature: Bookmark CRUD
     And the JSON nodes should be equal to:
       | title     | Da bookmark creation      |
       | author    | new author                |
-      | url       | www.such-url-1-create.com |
+      | url       | www.such-dummy.com        |
       | height    | 54                        |
       | width     | 89                        |
       | duration  | 720                       |

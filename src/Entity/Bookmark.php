@@ -44,7 +44,7 @@ class Bookmark
      *
      * @Groups({"bookmark:read"})
      */
-    private $title;
+    public $title;
 
     /**
      * @var string
@@ -53,7 +53,7 @@ class Bookmark
      *
      * @Groups({"bookmark:read"})
      */
-    private $author;
+    public $author;
 
     /**
      * @ORM\Column(type="datetime")
@@ -69,7 +69,7 @@ class Bookmark
      * @Assert\NotBlank
      * @Groups({"bookmark:read", "bookmark:write"})
      */
-    private $url;
+    public $url;
 
     /**
      * @var int
@@ -78,7 +78,7 @@ class Bookmark
      *
      * @Groups({"bookmark:read"})
      */
-    private $height;
+    public $height;
 
     /**
      * @var int
@@ -86,7 +86,7 @@ class Bookmark
      *
      * @Groups({"bookmark:read"})
      */
-    private $width;
+    public $width;
 
     /**
      * @var int
@@ -94,7 +94,7 @@ class Bookmark
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"bookmark:read", "bookmark:write"})
      */
-    private $duration;
+    public $duration;
 
     /**
      * @var string
@@ -105,7 +105,7 @@ class Bookmark
      * @Assert\NotBlank
      * @Groups({"bookmark:read", "bookmark:write"})
      */
-    private $type;
+    public $type;
 
     /**
      * @var array
@@ -114,7 +114,7 @@ class Bookmark
      *
      * @Groups({"bookmark:read", "bookmark:write"})
      */
-    private $tags;
+    public $tags;
 
     public function __construct()
     {
@@ -132,23 +132,9 @@ class Bookmark
         return $this->title;
     }
 
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
     public function getAuthor(): ?string
     {
         return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -156,23 +142,9 @@ class Bookmark
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
     public function getUrl(): ?string
     {
         return $this->url;
-    }
-
-    public function setUrl(string $url): self
-    {
-        $this->url = $url;
-
-        return $this;
     }
 
     public function getHeight(): ?int
@@ -180,23 +152,9 @@ class Bookmark
         return $this->height;
     }
 
-    public function setHeight(int $height): self
-    {
-        $this->height = $height;
-
-        return $this;
-    }
-
     public function getWidth(): ?int
     {
         return $this->width;
-    }
-
-    public function setWidth(int $width): self
-    {
-        $this->width = $width;
-
-        return $this;
     }
 
     public function getDuration(): ?int
@@ -204,23 +162,9 @@ class Bookmark
         return $this->duration;
     }
 
-    public function setDuration(?int $duration): self
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
     public function getType(): ?string
     {
         return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
     }
 
     public function getTags(): ?array

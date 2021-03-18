@@ -13,6 +13,7 @@
         "doctrine/orm": "^2.7",
         "embed/embed": "^4.3",
         "guikingone/symfony-uid-doctrine": "^0.1.1",
+        "nyholm/psr7": "^1.4",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/asset": "5.2.*",

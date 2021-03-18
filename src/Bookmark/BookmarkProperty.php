@@ -4,7 +4,7 @@ namespace App\Bookmark;
 
 use Embed\Embed;
 
-class BookmarkProperty
+class BookmarkProperty implements BookmarkPropertyInterface
 {
     /**
      * @var string
@@ -26,7 +26,7 @@ class BookmarkProperty
      */
     public $width;
 
-    public static function createFromLink(string $link): self
+    public static function createFromLink(string $link): BookmarkPropertyInterface
     {
         $bookmarkProperty = new self();
         $extractor = (new Embed())->get($link);

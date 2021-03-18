@@ -22,13 +22,15 @@ class BookmarkController
     private $validator;
     private $manager;
     private $repository;
+    private $handler;
 
-    public function __construct(SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $manager, BookmarkRepository $repository)
+    public function __construct(SerializerInterface $serializer, ValidatorInterface $validator, EntityManagerInterface $manager, BookmarkRepository $repository, BookmarkHandler $handler)
     {
         $this->serializer = $serializer;
         $this->validator = $validator;
         $this->manager = $manager;
         $this->repository = $repository;
+        $this->handler = $handler;
     }
 
     /**
@@ -65,13 +67,12 @@ class BookmarkController
         }
 
         /** @var Bookmark $payload */
-        $payload = $this->serializer->deserialize($request->getContent(), Bookmark::class, $request->getContentType(), ['groups' => 'bookmark:write']);
-        $errors = $this->validator->validate($payload);
+        $bookmark = $this->handler->hydrate($bookmark, \json_decode($request->getContent(), true));
+        $errors = $this->validator->validate($bookmark);
 
         if ($errors->count() > 0) {
             throw new InvalidPayloadException($errors);
         }
-        $bookmark = BookmarkHandler::hydrate($bookmark);
 
         $this->manager->flush();
 
@@ -93,12 +94,12 @@ class BookmarkController
     {
         /** @var Bookmark $bookmark */
         $bookmark = $this->serializer->deserialize($request->getContent(), Bookmark::class, $request->getContentType(), ['groups' => 'bookmark:write']);
+        $bookmark = $this->handler->hydrate($bookmark);
         $errors = $this->validator->validate($bookmark);
 
         if ($errors->count() > 0) {
             throw new InvalidPayloadException($errors);
         }
-        $bookmark = BookmarkHandler::hydrate($bookmark);
 
         $this->manager->persist($bookmark);
         $this->manager->flush();
