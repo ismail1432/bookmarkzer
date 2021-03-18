@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Bookmark\BookmarkHandler;
 use App\Entity\Bookmark;
 use App\Exception\InvalidPayloadException;
 use App\Repository\BookmarkRepository;
@@ -67,12 +68,10 @@ class BookmarkController
         $payload = $this->serializer->deserialize($request->getContent(), Bookmark::class, $request->getContentType(), ['groups' => 'bookmark:write']);
         $errors = $this->validator->validate($payload);
 
-        $data = \json_decode($request->getContent(), true);
-
         if ($errors->count() > 0) {
             throw new InvalidPayloadException($errors);
         }
-        $bookmark->updateFromPayload($data);
+        $bookmark = BookmarkHandler::hydrate($bookmark);
 
         $this->manager->flush();
 
@@ -99,6 +98,7 @@ class BookmarkController
         if ($errors->count() > 0) {
             throw new InvalidPayloadException($errors);
         }
+        $bookmark = BookmarkHandler::hydrate($bookmark);
 
         $this->manager->persist($bookmark);
         $this->manager->flush();

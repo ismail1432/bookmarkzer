@@ -42,9 +42,7 @@ class Bookmark
      *
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank
-     *
-     * @Groups({"bookmark:read", "bookmark:write"})
+     * @Groups({"bookmark:read"})
      */
     private $title;
 
@@ -53,15 +51,13 @@ class Bookmark
      *
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank
-     *
-     * @Groups({"bookmark:read", "bookmark:write"})
+     * @Groups({"bookmark:read"})
      */
     private $author;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"bookmark:read", "bookmark:write"})
+     * @Groups({"bookmark:read"})
      */
     private $createdAt;
 
@@ -80,8 +76,7 @@ class Bookmark
      *
      * @ORM\Column(type="integer")
      *
-     * @Assert\NotBlank
-     * @Groups({"bookmark:read", "bookmark:write"})
+     * @Groups({"bookmark:read"})
      */
     private $height;
 
@@ -89,8 +84,7 @@ class Bookmark
      * @var int
      * @ORM\Column(type="integer")
      *
-     * @Assert\NotBlank
-     * @Groups({"bookmark:read", "bookmark:write"})
+     * @Groups({"bookmark:read"})
      */
     private $width;
 
@@ -115,7 +109,7 @@ class Bookmark
 
     /**
      * @var array
-     * 
+     *
      * @ORM\Column(type="array", length=255)
      *
      * @Groups({"bookmark:read", "bookmark:write"})
@@ -244,14 +238,5 @@ class Bookmark
     public function getUuid(): Uuid
     {
         return $this->uuid;
-    }
-
-    public function updateFromPayload(array $data): self
-    {
-        foreach ($data as $key => $value) {
-            $this->{$key} = $value;
-        }
-
-        return $this;
     }
 }

@@ -11,7 +11,8 @@ class InvalidPayloadException extends \RuntimeException
     public function __construct(ConstraintViolationListInterface $constraintViolationList, string $message = '', int $code = 0, \Exception $previous = null)
     {
         $this->constraintViolationList = $constraintViolationList;
-
+        dump($this->constraintViolationList);
+        die;
         parent::__construct($message ?: $this->__toString(), $code, $previous);
     }
 
