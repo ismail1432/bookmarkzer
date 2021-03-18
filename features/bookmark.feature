@@ -24,40 +24,50 @@ Feature: Bookmark CRUD
       | tags[1]   | sport                                           |
       | @id       | /bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77 |
 
+  @get
+  Scenario: I should be able to read a collection of Bookmarks
+    Given I send a "GET" request to "/bookmarks"
+    Then the response status code should be 200
+    And I should see "bookmark_1"
+    And I should see "bookmark_40"
+
   @put
-  Scenario: I should be able to read a Bookmark
-    Given I send a "PUT" request to "/bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77" with body:
+  Scenario: I should be able to update a Bookmark
+    Given I add "Content-Type" header equal to "application/json"
+    And I send a "PUT" request to "/bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77" with body:
     """
     {
-      "title": "bookmark_1 update",
-	  "author": "Adah update",
-	  "url": "www.such-url-1-update.com",
+      "title": "bookmark_1 edited",
+	  "author": "Adah edited",
+	  "url": "www.such-url-1-edited.com",
 	  "height": 25,
 	  "width": 49,
 	  "duration": 180
     }
     """
     And the JSON nodes should be equal to:
-      | title     | bookmark_1 update         |
-      | author    | Adah update               |
+      | title     | bookmark_1 edited         |
+      | author    | Adah edited               |
       | createdAt | 2018-06-01T00:00:00+00:00 |
-      | url       | www.such-url-1-update.com |
+      | url       | www.such-url-1-edited.com |
       | height    | 25                        |
       | width     | 49                        |
       | duration  | 180                       |
-    Then the response status code should be 201
+    Then the response status code should be 200
 
   @post
-  Scenario: I should be able to read a list of Bookmark
-    Given I send a "POST" request to "/bookmarks" with body:
+  Scenario: I should be able to create a list of
+    Given I add "Content-Type" header equal to "application/json"
+    And I send a "POST" request to "/bookmarks" with body:
     """
     {
-      "title": "Da bookmark creation"
+      "title": "Da bookmark creation",
 	  "author": "new author",
 	  "url": "www.such-url-1-create.com",
 	  "height": 54,
 	  "width": 89,
-	  "duration": 720
+	  "duration": 720,
+	  "type": "video"
     }
     """
     And the JSON nodes should be equal to:
@@ -67,5 +77,5 @@ Feature: Bookmark CRUD
       | height    | 54                        |
       | width     | 89                        |
       | duration  | 720                       |
-    Then the response status code should be 200
+    Then the response status code should be 201
 

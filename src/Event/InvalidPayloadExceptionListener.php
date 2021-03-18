@@ -24,7 +24,7 @@ class InvalidPayloadExceptionListener implements EventSubscriberInterface
         /** @var InvalidPayloadException $exception */
         $exception = $event->getThrowable();
 
-        if(!$this->supports($exception)) {
+        if (!$this->supports($exception)) {
             return;
         }
 
@@ -39,10 +39,9 @@ class InvalidPayloadExceptionListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::EXCEPTION => 'onKernelException'
+            KernelEvents::EXCEPTION => 'onKernelException',
         ];
     }
-
 
     private function supports(\Throwable $exception)
     {

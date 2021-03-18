@@ -15,7 +15,6 @@ class BookmarkNormalizer implements ContextAwareNormalizerInterface
         $this->normalizer = $normalizer;
     }
 
-
     public function normalize($object, string $format = null, array $context = [])
     {
         $data = $this->normalizer->normalize($object, $format, $context);
@@ -27,6 +26,6 @@ class BookmarkNormalizer implements ContextAwareNormalizerInterface
 
     public function supportsNormalization($data, string $format = null, array $context = [])
     {
-       return $data instanceof Bookmark;
+        return $data instanceof Bookmark;
     }
 }
