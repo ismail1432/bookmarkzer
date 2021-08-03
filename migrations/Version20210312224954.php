@@ -26,7 +26,7 @@ final class Version20210312224954 extends AbstractMigration
           title VARCHAR(255) NOT NULL,
           author VARCHAR(255) NOT NULL,
           created_at DATETIME NOT NULL,
-          url VARCHAR(255) NOT NULL,
+          url TEXT NOT NULL,
           height INT NOT NULL,
           width INT NOT NULL,
           duration INT DEFAULT NULL,

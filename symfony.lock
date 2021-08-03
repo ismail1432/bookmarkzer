@@ -18,7 +18,7 @@
         "version": "3.3.0"
     },
     "composer/ca-bundle": {
-        "version": "1.2.9"
+        "version": "1.2.10"
     },
     "composer/package-versions-deprecated": {
         "version": "1.11.99"
@@ -49,6 +49,9 @@
     },
     "doctrine/dbal": {
         "version": "2.10.3"
+    },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
     },
     "doctrine/doctrine-bundle": {
         "version": "2.0",
@@ -109,7 +112,7 @@
         "version": "2.1.20"
     },
     "embed/embed": {
-        "version": "v4.3.0"
+        "version": "v4.3.4"
     },
     "fakerphp/faker": {
         "version": "v1.12.0"
@@ -137,6 +140,9 @@
             "features/demo.feature",
             "tests/Behat/DemoContext.php"
         ]
+    },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.5"
     },
     "fzaninotto/faker": {
         "version": "v1.9.1"
@@ -207,7 +213,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.0",
-            "ref": "7c0a9352a57376f04f5444e74565102c3a23d0c7"
+            "ref": "0cd4d2d0e7f646fda75f9944f747a56e6ed13d4c"
         },
         "files": [
             "config/packages/nyholm_psr7.yaml"
@@ -282,6 +288,9 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "symfony/amqp-messenger": {
+        "version": "v5.2.12"
+    },
     "symfony/asset": {
         "version": "v5.1.5"
     },
@@ -335,6 +344,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v5.1.5"
+    },
+    "symfony/doctrine-messenger": {
+        "version": "v5.2.12"
     },
     "symfony/dom-crawler": {
         "version": "v5.1.5"
@@ -430,6 +442,18 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/messenger": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "e9a414b113ceadbf4e52abe37bf8f1b443f06ccb"
+        },
+        "files": [
+            "config/packages/messenger.yaml"
+        ]
+    },
     "symfony/mime": {
         "version": "v5.1.5"
     },
@@ -493,6 +517,9 @@
     "symfony/polyfill-php80": {
         "version": "v1.18.1"
     },
+    "symfony/polyfill-php81": {
+        "version": "v1.23.0"
+    },
     "symfony/polyfill-uuid": {
         "version": "v1.22.1"
     },
@@ -510,6 +537,9 @@
     },
     "symfony/proxy-manager-bridge": {
         "version": "v5.1.5"
+    },
+    "symfony/redis-messenger": {
+        "version": "v5.2.12"
     },
     "symfony/routing": {
         "version": "5.1",

@@ -1,23 +1,25 @@
 <?php
 
-namespace App\Entity;
+namespace App\Domain\Model;
 
-use App\Repository\BookmarkRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Guikingone\SymfonyUid\Doctrine\Uuid\UuidGenerator;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Uid\UuidV4;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=BookmarkRepository::class)
+ * @ORM\Entity
  */
 class Bookmark
 {
     public const TYPES = [
         'video',
         'photo',
+    ];
+
+    public const SUPPORTED_HOST = [
+        'www.flickr.com',
+        'www.vimeo.com',
     ];
 
     /**
@@ -35,101 +37,76 @@ class Bookmark
      * @ORM\Column(name="uuid", type="uuid", unique=true)
      * @ORM\CustomIdGenerator(class=UuidGenerator::class)
      */
-    private $uuid;
+    private Uuid $uuid;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=255)
-     *
-     * @Groups({"bookmark:read"})
      */
-    public $title;
+    private string $title;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=255)
-     *
-     * @Groups({"bookmark:read"})
      */
-    public $author;
+    private string $author;
 
     /**
+     * @var \DateTimeImmutable
+     *
      * @ORM\Column(type="datetime")
-     * @Groups({"bookmark:read"})
      */
-    private $createdAt;
+    private \DateTime $createdAt;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank
-     * @Groups({"bookmark:read", "bookmark:write"})
      */
-    public $url;
+    private string $url;
 
     /**
-     * @var int
-     *
      * @ORM\Column(type="integer")
-     *
-     * @Groups({"bookmark:read"})
      */
-    public $height;
+    private int $height;
 
     /**
-     * @var int
      * @ORM\Column(type="integer")
-     *
-     * @Groups({"bookmark:read"})
      */
-    public $width;
+    private int $width;
 
     /**
-     * @var int
-     *
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"bookmark:read", "bookmark:write"})
      */
-    public $duration;
+    private ?int $duration = null;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\Choice(choices=Bookmark::TYPES, message="Choose a valid type.")
-     * @Assert\NotBlank
-     * @Groups({"bookmark:read", "bookmark:write"})
      */
-    public $type;
+    private string $type;
 
     /**
-     * @var array
-     *
      * @ORM\Column(type="array", length=255)
-     *
-     * @Groups({"bookmark:read", "bookmark:write"})
      */
-    public $tags;
+    private array $tags = [];
 
-    public function __construct()
+    public static function create(string $title, string $author, string $url, int $height, int $width, string $type, array $tags = [], ?int $duration = null): self
     {
-        $this->uuid = UuidV4::v4();
-        $this->createdAt = new \DateTimeImmutable();
+        $self = new self();
+
+        $self->uuid = UuidV4::v4();
+        $self->createdAt = new \DateTimeImmutable();
+        $self->title = $title;
+        $self->author = $author;
+        $self->url = $url;
+        $self->height = $height;
+        $self->width = $width;
+        $self->duration = $duration;
+        $self->type = $type;
+        $self->tags = $tags;
+
+        return $self;
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
     }
 
     public function getAuthor(): ?string
@@ -152,6 +129,13 @@ class Bookmark
         return $this->height;
     }
 
+    public function setHeight(int $height): self
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
     public function getWidth(): ?int
     {
         return $this->width;
@@ -172,15 +156,13 @@ class Bookmark
         return $this->tags;
     }
 
-    public function addTag(string $tag): self
-    {
-        $this->tags[] = $tag;
-
-        return $this;
-    }
-
     public function getUuid(): Uuid
     {
         return $this->uuid;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
     }
 }
