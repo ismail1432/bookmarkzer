@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Event;
+namespace App\Port\Rest\Event;
 
 use App\Exception\InvalidPayloadException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

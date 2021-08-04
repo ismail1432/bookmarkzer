@@ -16,3 +16,16 @@ services:
     App\Controller\:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
+
+    # To refactor
+    App\Ports\Rest\Bookmark\CreateABookmark\:
+        resource: '../src/Ports/Rest/Bookmark/CreateABookmark'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Ports\Rest\Bookmark\GetABookmark\:
+        resource: '../src/Ports/Rest/Bookmark/GetABookmark'
+        tags: [ 'controller.service_arguments' ]
+
+    App\Ports\Rest\Bookmark\DeleteABookmark\:
+        resource: '../src/Ports/Rest/Bookmark/DeleteABookmark'
+        tags: [ 'controller.service_arguments' ]

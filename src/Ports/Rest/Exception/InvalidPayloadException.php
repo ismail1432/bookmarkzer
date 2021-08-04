@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exception;
+namespace App\Ports\Rest\Exception;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
