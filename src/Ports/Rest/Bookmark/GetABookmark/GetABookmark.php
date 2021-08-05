@@ -2,15 +2,15 @@
 
 namespace App\Ports\Rest\Bookmark\GetABookmark;
 
+use App\Application\GetABookmark\GetABookmark as GetABookMarkMessage;
 use App\Domain\Exception\BookmarkNotFoundException;
-use App\Infrastructure\SynchronousBusInterface;
+use App\Infrastructure\Transport\SynchronousBusInterface;
 use App\Ports\Rest\Bookmark\Common\BookmarkOutput;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Serializer\SerializerInterface;
-use App\Application\GetABookmark\GetABookmark as GetABookMarkMessage;
-use Symfony\Component\Uid\UuidV4;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Uid\UuidV4;
 
 final class GetABookmark
 {
@@ -22,6 +22,7 @@ final class GetABookmark
         $this->bus = $bus;
         $this->serializer = $serializer;
     }
+
     /**
      * @Route("/bookmarks/{id}", name="bookmark_read", methods={"GET"}, requirements={"page"="/\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/"})
      */

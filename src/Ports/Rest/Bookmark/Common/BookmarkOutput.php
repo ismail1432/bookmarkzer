@@ -14,7 +14,7 @@ final class BookmarkOutput
     private string $url;
     private int $width;
     private int $height;
-    private \DateTime $createdAt;
+    private \DateTimeInterface $createdAt;
     private ?int $duration = null;
 
     public static function create(Bookmark $bookmark): self
@@ -31,6 +31,27 @@ final class BookmarkOutput
         $self->duration = $bookmark->getDuration();
 
         return $self;
+    }
+
+    /**
+     * @param Bookmark[] $data
+     *
+     * @return self[]
+     */
+    public static function createFromArray(array $data = [])
+    {
+        if ([] === $data) {
+            return [];
+        }
+
+        $bookmarks = [];
+        foreach ($data as $bookmark) {
+            $bookmarks['items'][] = self::create($bookmark);
+        }
+
+        $bookmarks['total'] = count($bookmarks['items']);
+
+        return $bookmarks;
     }
 
     public function getId()
@@ -68,7 +89,7 @@ final class BookmarkOutput
         return $this->url;
     }
 
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }

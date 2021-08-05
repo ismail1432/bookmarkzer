@@ -47,8 +47,8 @@ final class CreateABookmarkHandler implements MessageHandlerInterface
 
     private function assertSupportedHost(string $host): void
     {
-       if (!in_array($host, Bookmark::SUPPORTED_HOST)) {
-           throw new \LogicException("Unsupported Host !");
-       }
+        if (!in_array($host, Bookmark::SUPPORTED_HOST)) {
+            throw new \LogicException('Unsupported Host !');
+        }
     }
 }

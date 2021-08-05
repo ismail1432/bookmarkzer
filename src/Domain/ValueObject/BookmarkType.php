@@ -18,7 +18,7 @@ final class BookmarkType
     public function __construct(string $value)
     {
         if (!in_array($value, self::ALL)) {
-            throw new \LogicException(sprintf("Unsupported value : %s, supported values are %s", $value, implode(", ", self::ALL)));
+            throw new \LogicException(sprintf('Unsupported value : %s, supported values are %s', $value, implode(', ', self::ALL)));
         }
 
         $this->value = $value;
@@ -32,7 +32,7 @@ final class BookmarkType
     public static function createFromHost(string $host): self
     {
         $types = [
-        'www.flickr.com' => self::PHOTO ,
+        'www.flickr.com' => self::PHOTO,
         'www.vimeo.com' => self::VIDEO,
         ];
 

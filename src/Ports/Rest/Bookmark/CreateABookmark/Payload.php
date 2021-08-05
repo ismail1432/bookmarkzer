@@ -19,7 +19,7 @@ final class Payload
      *
      * @Assert\NotBlank
      * @Assert\Url(
-     *    message = "The url '{{ value }}' is not a valid url",
+     *     message = "The url '{{ value }}' is not a valid url",
      * )
      */
     public $link;

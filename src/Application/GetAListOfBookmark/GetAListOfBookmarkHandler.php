@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Application\DeleteABookmark;
+namespace App\Application\GetAListOfBookmark;
 
 use App\Domain\Repository\BookmarkRepositoryInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-final class DeleteABookmarkHandler implements MessageHandlerInterface
+final class GetAListOfBookmarkHandler implements MessageHandlerInterface
 {
     private BookmarkRepositoryInterface $bookmarkRepository;
 
@@ -16,8 +16,8 @@ final class DeleteABookmarkHandler implements MessageHandlerInterface
         $this->bookmarkRepository = $bookmarkRepository;
     }
 
-    public function __invoke(DeleteABookmark $message): void
+    public function __invoke(GetAListOfBookmark $bookmark)
     {
-        $this->bookmarkRepository->delete($message->getBookmarkId());
+        return $this->bookmarkRepository->findAll();
     }
 }

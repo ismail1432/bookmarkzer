@@ -10,6 +10,6 @@ final class BookmarkNotFoundException extends \RuntimeException
 {
     public static function notFound(UuidV4 $uuid)
     {
-        return new self(sprintf("There is no bookmark for id: %s", $uuid->__toString()));
+        return new self(sprintf('There is no bookmark for id: %s', $uuid->__toString()));
     }
 }

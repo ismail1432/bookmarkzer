@@ -17,7 +17,7 @@ final class CreateABookmarkCommand
         $this->tags = $tags;
     }
 
-    public function getUrl (): Url
+    public function getUrl(): Url
     {
         return $this->url;
     }
