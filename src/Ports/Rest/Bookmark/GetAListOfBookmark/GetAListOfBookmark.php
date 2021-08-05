@@ -6,13 +6,14 @@ namespace App\Ports\Rest\Bookmark\GetAListOfBookmark;
 
 use App\Application\GetAListOfBookmark\GetAListOfBookmark as GetAListOfBookmarkMessage;
 use App\Infrastructure\Transport\SynchronousBusInterface;
-use App\Ports\Rest\Bookmark\Common\BookmarkOutput;
+use App\Ports\Rest\Bookmark\BookmarkOutput;
+use App\Ports\Rest\RestRoutingInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-final class GetAListOfBookmark
+final class GetAListOfBookmark implements RestRoutingInterface
 {
     private SynchronousBusInterface $bus;
     private SerializerInterface $serializer;

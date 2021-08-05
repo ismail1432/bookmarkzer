@@ -7,12 +7,13 @@ namespace App\Ports\Rest\Bookmark\DeleteABookmark;
 use App\Application\GetABookmark\GetABookmark as Message;
 use App\Domain\Exception\BookmarkNotFoundException;
 use App\Infrastructure\Transport\SynchronousBusInterface;
+use App\Ports\Rest\RestRoutingInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Uid\UuidV4;
 
-final class DeleteABookmark
+final class DeleteABookmark implements RestRoutingInterface
 {
     private SynchronousBusInterface $bus;
 
