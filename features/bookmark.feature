@@ -15,7 +15,7 @@ Feature: Bookmark CRUD
       | title     | bookmark_1                                      |
       | author    | Adah                                            |
       | createdAt | 2018-06-01T00:00:00+00:00                       |
-      | url       | www.such-url-1-awesome.com                      |
+      | url       | www.flickr.com/1234                             |
       | height    | 15                                              |
       | width     | 19                                              |
       | duration  | 358                                             |
@@ -39,7 +39,7 @@ Feature: Bookmark CRUD
     {
       "title": "bookmark_1 edited",
 	  "author": "Adah edited",
-	  "url": "www.such-url-update.com",
+	  "url": "www.flickr.com/1234",
 	  "height": 25,
 	  "width": 49,
 	  "duration": 180
@@ -49,7 +49,7 @@ Feature: Bookmark CRUD
       | title     | bookmark_1 edited         |
       | author    | Adah edited               |
       | createdAt | 2018-06-01T00:00:00+00:00 |
-      | url       | www.such-url-update.com   |
+      | url       | www.flickr.com/1234       |
       | height    | 25                        |
       | width     | 49                        |
       | duration  | 180                       |
@@ -63,7 +63,7 @@ Feature: Bookmark CRUD
     {
       "title": "Da bookmark creation",
 	  "author": "new author",
-	  "url": "www.such-dummy.com",
+	  "url": "www.vimeo.com/4321",
 	  "height": 54,
 	  "width": 89,
 	  "duration": 720,
@@ -73,7 +73,7 @@ Feature: Bookmark CRUD
     And the JSON nodes should be equal to:
       | title     | Da bookmark creation      |
       | author    | new author                |
-      | url       | www.such-dummy.com        |
+      | url       | www.vimeo.com/4321        |
       | height    | 54                        |
       | width     | 89                        |
       | duration  | 720                       |

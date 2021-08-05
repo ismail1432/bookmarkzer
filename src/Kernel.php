@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Ports\Rest\Bookmark\RestBookmarkInterface;
+use App\Ports\Rest\RestRoutingInterface;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -42,7 +42,8 @@ class Kernel extends BaseKernel
     {
         parent::build($container);
 
-        $container->registerForAutoconfiguration(RestBookmarkInterface::class)
+        // Used to register REST controllers as a services.
+        $container->registerForAutoconfiguration(RestRoutingInterface::class)
             ->addTag('controller.service_arguments');
     }
 }

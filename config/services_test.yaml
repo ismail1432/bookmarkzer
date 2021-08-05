@@ -6,6 +6,4 @@ services:
     App\Tests\Behat\:
         resource: '../tests/Behat/*'
 
-    App\Tests\Bookmark\BookmarkProperty: ~
-
-    App\Bookmark\BookmarkPropertyInterface: '@App\Tests\Bookmark\BookmarkProperty'
+    'App\Domain\ValueObject\Link\EmbedInterface': '@App\Infrastructure\Embed\FakeEmbed'

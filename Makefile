@@ -1,5 +1,5 @@
 DOCKER_COMPOSE = docker-compose
-EXEC_PHP = $(DOCKER_COMPOSE) exec -T -u www-data php
+EXEC_PHP = $(DOCKER_COMPOSE) exec -u www-data php
 EXEC_YARN = $(DOCKER_COMPOSE) exec -T -u www-data php yarn
 EXEC_SYMFONY = $(DOCKER_COMPOSE) exec -T -u www-data php bin/console
 EXEC_DB = $(DOCKER_COMPOSE) exec -T db sh -c

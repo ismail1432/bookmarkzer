@@ -5,14 +5,15 @@ namespace App\Ports\Rest\Bookmark\GetABookmark;
 use App\Application\GetABookmark\GetABookmark as GetABookMarkMessage;
 use App\Domain\Exception\BookmarkNotFoundException;
 use App\Infrastructure\Transport\SynchronousBusInterface;
-use App\Ports\Rest\Bookmark\Common\BookmarkOutput;
+use App\Ports\Rest\Bookmark\BookmarkOutput;
+use App\Ports\Rest\RestRoutingInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Uid\UuidV4;
 
-final class GetABookmark
+final class GetABookmark implements RestRoutingInterface
 {
     private SynchronousBusInterface $bus;
     private SerializerInterface $serializer;

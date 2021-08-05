@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Ports\Rest\Bookmark\Common;
+namespace App\Ports\Rest\Bookmark;
 
 use App\Domain\Model\Bookmark;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

@@ -13,17 +13,6 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    # To refactor (tag an interface or deal with regexp...)
-    App\Ports\Rest\Bookmark\CreateABookmark\:
-        resource: '../src/Ports/Rest/Bookmark/CreateABookmark'
-        tags: [ 'controller.service_arguments' ]
+    'App\Infrastructure\Embed\Embed': ~
 
-    App\Ports\Rest\Bookmark\GetABookmark\:
-        resource: '../src/Ports/Rest/Bookmark/GetABookmark'
-        tags: [ 'controller.service_arguments' ]
-
-    App\Ports\Rest\Bookmark\DeleteABookmark\:
-        resource: '../src/Ports/Rest/Bookmark/DeleteABookmark'
-        tags: [ 'controller.service_arguments' ]
-
-    App\Ports\Rest\Bookmark\GetAListOfBookmark: ~
+    'App\Domain\EmbedInterface': '@App\Infrastructure\Embed\Embed'
