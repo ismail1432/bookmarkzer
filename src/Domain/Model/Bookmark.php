@@ -50,11 +50,9 @@ class Bookmark
     private string $author;
 
     /**
-     * @var \DateTimeImmutable
-     *
      * @ORM\Column(type="datetime")
      */
-    private \DateTime $createdAt;
+    private \DateTimeInterface $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -114,7 +112,7 @@ class Bookmark
         return $this->author;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }

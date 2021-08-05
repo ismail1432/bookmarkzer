@@ -16,7 +16,7 @@ final class Embed implements EmbedInterface
     {
         $this->embed = $this->embed ?? new OriginalEmbed();
 
-        $content =  $this->embed->get($link);
+        $content = $this->embed->get($link);
 
         return Link::create(
             $content->title,

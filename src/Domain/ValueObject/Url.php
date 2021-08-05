@@ -11,7 +11,7 @@ final class Url
     public function __construct(string $value)
     {
         if (false === filter_var($value, FILTER_VALIDATE_URL)) {
-            throw new \RuntimeException("Invalid url given");
+            throw new \RuntimeException('Invalid url given');
         }
 
         $this->value = $value;

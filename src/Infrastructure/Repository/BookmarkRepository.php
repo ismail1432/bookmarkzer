@@ -3,8 +3,8 @@
 namespace App\Infrastructure\Repository;
 
 use App\Domain\Exception\BookmarkNotFoundException;
-use App\Domain\Repository\BookmarkRepositoryInterface;
 use App\Domain\Model\Bookmark;
+use App\Domain\Repository\BookmarkRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Uid\UuidV4;
 
@@ -47,5 +47,15 @@ class BookmarkRepository implements BookmarkRepositoryInterface
 
         $this->entityManager->remove($bookmark);
         $this->entityManager->flush();
+    }
+
+    public function findAll(): array
+    {
+        return  $this->entityManager->createQueryBuilder()
+            ->select('b')
+            ->from(Bookmark::class, 'b')
+            ->getQuery()
+            ->getResult()
+            ;
     }
 }

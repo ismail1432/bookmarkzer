@@ -13,11 +13,7 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    App\Controller\:
-        resource: '../src/Controller/'
-        tags: ['controller.service_arguments']
-
-    # To refactor
+    # To refactor (tag an interface or deal with regexp...)
     App\Ports\Rest\Bookmark\CreateABookmark\:
         resource: '../src/Ports/Rest/Bookmark/CreateABookmark'
         tags: [ 'controller.service_arguments' ]
@@ -29,3 +25,5 @@ services:
     App\Ports\Rest\Bookmark\DeleteABookmark\:
         resource: '../src/Ports/Rest/Bookmark/DeleteABookmark'
         tags: [ 'controller.service_arguments' ]
+
+    App\Ports\Rest\Bookmark\GetAListOfBookmark: ~

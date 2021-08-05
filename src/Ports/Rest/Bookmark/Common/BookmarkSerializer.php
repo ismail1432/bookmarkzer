@@ -6,10 +6,7 @@ namespace App\Ports\Rest\Bookmark\Common;
 
 use App\Domain\Model\Bookmark;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Serializer\Encoder\NormalizationAwareInterface;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 final class BookmarkSerializer implements ContextAwareNormalizerInterface

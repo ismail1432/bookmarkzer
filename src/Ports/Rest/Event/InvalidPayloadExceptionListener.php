@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Port\Rest\Event;
+namespace App\Ports\Rest\Event;
 
-use App\Exception\InvalidPayloadException;
+use App\Ports\Rest\Exception\InvalidPayloadException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
