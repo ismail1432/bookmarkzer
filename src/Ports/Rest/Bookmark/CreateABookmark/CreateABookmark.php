@@ -38,7 +38,7 @@ final class CreateABookmark implements RestRoutingInterface
         $payload = new Payload();
 
         $payload->link = $body['link'] ?? null;
-        $payload->tags = $body['tags'] ?? null;
+        $payload->tags = $body['tags'] ?? [];
 
         $errors = $this->validator->validate($payload);
 

@@ -43,7 +43,7 @@ final class UpdateABookmark implements RestRoutingInterface
         $payload = new Payload();
 
         $payload->link = $body['link'] ?? null;
-        $payload->tags = $body['tags'] ?? null;
+        $payload->tags = $body['tags'] ?? [];
 
         $errors = $this->validator->validate($payload);
 
@@ -53,13 +53,14 @@ final class UpdateABookmark implements RestRoutingInterface
 
         try {
             $bookmark = $this->bus->handle(
-                new UpdateABookmarkCommand(UuidV4::fromString($id), new Url($payload->link), $payload->tags));
+                new UpdateABookmarkCommand(UuidV4::fromString($id), new Url($payload->link), $payload->tags)
+            );
         } catch (BookmarkNotFoundException $e) {
             throw new NotFoundHttpException($e->getMessage());
         }
 
         $output = BookmarkOutput::create($bookmark);
 
-        return new Response($this->serializer->serialize($output, 'json'), 201);
+        return new Response($this->serializer->serialize($output, 'json'), 200);
     }
 }
