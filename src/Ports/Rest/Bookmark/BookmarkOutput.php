@@ -11,11 +11,13 @@ final class BookmarkOutput
     private $id;
     private string $title;
     private string $author;
-    private string $url;
+    private string $link;
     private int $width;
     private int $height;
     private \DateTimeInterface $createdAt;
     private ?int $duration = null;
+    private ?string $type;
+    private array $tags = [];
 
     public static function create(Bookmark $bookmark): self
     {
@@ -24,11 +26,13 @@ final class BookmarkOutput
         $self->id = $bookmark->getUuid();
         $self->title = $bookmark->getTitle();
         $self->author = $bookmark->getAuthor();
-        $self->url = $bookmark->getUrl();
+        $self->link = $bookmark->getLink();
         $self->width = $bookmark->getWidth();
         $self->height = $bookmark->getHeight();
         $self->createdAt = $bookmark->getCreatedAt();
         $self->duration = $bookmark->getDuration();
+        $self->tags = $bookmark->getTags();
+        $self->type = $bookmark->getType();
 
         return $self;
     }
@@ -84,13 +88,23 @@ final class BookmarkOutput
         return $this->duration;
     }
 
-    public function getUrl(): string
+    public function getLink(): string
     {
-        return $this->url;
+        return $this->link;
     }
 
     public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
+    }
+
+    public function getTags(): array
+    {
+        return $this->tags;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }

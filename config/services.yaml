@@ -16,3 +16,10 @@ services:
     'App\Infrastructure\Embed\Embed': ~
 
     'App\Domain\EmbedInterface': '@App\Infrastructure\Embed\Embed'
+
+    app.fixtures.reflection_property_accessor:
+        class: Nelmio\Alice\PropertyAccess\ReflectionPropertyAccessor
+        public: false
+        decorates: nelmio_alice.property_accessor
+        decoration_priority: -10
+        arguments: [ '@app.fixtures.reflection_property_accessor.inner' ]

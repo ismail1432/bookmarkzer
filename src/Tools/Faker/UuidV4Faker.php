@@ -6,8 +6,8 @@ use Symfony\Component\Uid\UuidV4;
 
 final class UuidV4Faker
 {
-    public function uuidv4(): UuidV4
+    public function uuidv4(?string $uuid = null): UuidV4
     {
-        return UuidV4::v4();
+        return $uuid ? UuidV4::fromString($uuid) : UuidV4::v4();
     }
 }

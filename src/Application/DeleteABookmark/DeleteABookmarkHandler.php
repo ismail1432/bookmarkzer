@@ -16,7 +16,7 @@ final class DeleteABookmarkHandler implements MessageHandlerInterface
         $this->bookmarkRepository = $bookmarkRepository;
     }
 
-    public function __invoke(DeleteABookmark $message): void
+    public function __invoke(DeleteABookmarkCommand $message): void
     {
         $this->bookmarkRepository->delete($message->getBookmarkId());
     }

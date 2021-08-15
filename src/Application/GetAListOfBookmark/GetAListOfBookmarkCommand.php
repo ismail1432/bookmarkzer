@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\GetAListOfBookmark;
 
-final class GetAListOfBookmark
+final class GetAListOfBookmarkCommand
 {
     private int $page;
     private int $limit;

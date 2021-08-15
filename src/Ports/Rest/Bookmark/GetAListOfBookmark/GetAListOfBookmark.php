@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Ports\Rest\Bookmark\GetAListOfBookmark;
 
-use App\Application\GetAListOfBookmark\GetAListOfBookmark as GetAListOfBookmarkMessage;
+use App\Application\GetAListOfBookmark\GetAListOfBookmarkCommand as GetAListOfBookmarkMessage;
 use App\Infrastructure\Transport\SynchronousBusInterface;
 use App\Ports\Rest\Bookmark\BookmarkOutput;
 use App\Ports\Rest\RestRoutingInterface;

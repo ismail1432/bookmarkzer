@@ -6,7 +6,7 @@ namespace App\Application\DeleteABookmark;
 
 use Symfony\Component\Uid\UuidV4;
 
-final class DeleteABookmark
+final class DeleteABookmarkCommand
 {
     private UuidV4 $bookmarkId;
 

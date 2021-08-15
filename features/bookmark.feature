@@ -7,24 +7,23 @@ Feature: Bookmark CRUD
   #################
   # CRUD scenario #
   #################
-  @get
+  @get @item
   Scenario: I should be able to read a Bookmark
     Given I send a "GET" request to "/bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77"
     Then the response status code should be 200
     And the JSON nodes should be equal to:
-      | title     | bookmark_1                                      |
-      | author    | Adah                                            |
-      | createdAt | 2018-06-01T00:00:00+00:00                       |
-      | url       | www.flickr.com/1234                             |
-      | height    | 15                                              |
-      | width     | 19                                              |
-      | duration  | 358                                             |
-      | type      | video                                           |
-      | tags[0]   | fun                                             |
-      | tags[1]   | sport                                           |
-      | @id       | /bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77 |
+      | title     | such a title for video                                                     |
+      | author    | smaone                                                                     |
+      | createdAt | 2020-06-01T00:00:00+00:00                                                  |
+      | link      | www.vimeo.com/4242                                                         |
+      | height    | 420                                                                        |
+      | width     | 240                                                                        |
+      | duration  | 60                                                                         |
+      | type      | video                                                                      |
+      | tags[0]   | sport                                                                      |
+      | @id       | https://bookmarkland.docker/bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77 |
 
-  @get
+  @get @collection
   Scenario: I should be able to read a collection of Bookmarks
     Given I send a "GET" request to "/bookmarks"
     Then the response status code should be 200
@@ -37,19 +36,16 @@ Feature: Bookmark CRUD
     And I send a "PUT" request to "/bookmarks/a179e430-6356-4fb5-91b2-ead2e166fa77" with body:
     """
     {
-      "title": "bookmark_1 edited",
-	  "author": "Adah edited",
-	  "url": "www.flickr.com/1234",
-	  "height": 25,
-	  "width": 49,
-	  "duration": 180
+	  "link": "https://www.flickr.com/1234",
+	  "duration": 180,
+	  "tags": []
     }
     """
     And the JSON nodes should be equal to:
       | title     | bookmark_1 edited         |
       | author    | Adah edited               |
       | createdAt | 2018-06-01T00:00:00+00:00 |
-      | url       | www.flickr.com/1234       |
+      | link      | www.flickr.com/1234       |
       | height    | 25                        |
       | width     | 49                        |
       | duration  | 180                       |
@@ -61,21 +57,16 @@ Feature: Bookmark CRUD
     And I send a "POST" request to "/bookmarks" with body:
     """
     {
-      "title": "Da bookmark creation",
-	  "author": "new author",
-	  "url": "www.vimeo.com/4321",
-	  "height": 54,
-	  "width": 89,
-	  "duration": 720,
+	  "link": "https://www.vimeo.com/4321",
 	  "type": "video"
     }
     """
     And the JSON nodes should be equal to:
-      | title     | Da bookmark creation      |
-      | author    | new author                |
-      | url       | www.vimeo.com/4321        |
-      | height    | 54                        |
-      | width     | 89                        |
-      | duration  | 720                       |
+      | title    | Da bookmark creation |
+      | author   | new author           |
+      | link     | www.vimeo.com/4321   |
+      | height   | 54                   |
+      | width    | 89                   |
+      | duration | 720                  |
     Then the response status code should be 201
 

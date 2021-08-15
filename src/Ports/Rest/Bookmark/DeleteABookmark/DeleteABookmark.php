@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Ports\Rest\Bookmark\DeleteABookmark;
 
-use App\Application\GetABookmark\GetABookmark as Message;
+use App\Application\GetABookmark\GetABookmarkCommand as Message;
 use App\Domain\Exception\BookmarkNotFoundException;
 use App\Infrastructure\Transport\SynchronousBusInterface;
 use App\Ports\Rest\RestRoutingInterface;

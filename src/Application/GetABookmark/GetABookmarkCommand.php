@@ -6,7 +6,7 @@ namespace App\Application\GetABookmark;
 
 use Symfony\Component\Uid\UuidV4;
 
-final class GetABookmark
+final class GetABookmarkCommand
 {
     private UuidV4 $bookmarkId;
 
