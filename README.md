@@ -3,7 +3,7 @@
 
 ## Description
 
-Bookmark application
+Bookmark application with DDD and CQRS approach 🔥
 
 ### Installation 
 
