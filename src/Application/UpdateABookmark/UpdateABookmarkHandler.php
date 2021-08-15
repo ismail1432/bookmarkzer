@@ -15,7 +15,6 @@ final class UpdateABookmarkHandler implements MessageHandlerInterface
     private BookmarkRepositoryInterface $bookmarkRepository;
     private EmbedInterface $embed;
 
-
     public function __construct(BookmarkRepositoryInterface $bookmarkRepository, EmbedInterface $embed)
     {
         $this->bookmarkRepository = $bookmarkRepository;

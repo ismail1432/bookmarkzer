@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Ports\Rest\Bookmark\UpdateABookmark;
 
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 final class Payload
 {

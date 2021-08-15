@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Ports\Rest\Bookmark\UpdateABookmark;
 
-use App\Application\CreateABookmark\CreateABookmarkCommand;
 use App\Application\UpdateABookmark\UpdateABookmarkCommand;
 use App\Domain\Exception\BookmarkNotFoundException;
 use App\Domain\ValueObject\Url;
@@ -15,11 +14,10 @@ use App\Ports\Rest\RestRoutingInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Uid\UuidV4;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Routing\Annotation\Route;
-
 
 final class UpdateABookmark implements RestRoutingInterface
 {
