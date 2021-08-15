@@ -13,9 +13,7 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    'App\Infrastructure\Embed\Embed': ~
-
-    'App\Domain\EmbedInterface': '@App\Infrastructure\Embed\Embed'
+    App\Domain\EmbedInterface: '@App\Infrastructure\Embed\Embed'
 
     app.fixtures.reflection_property_accessor:
         class: Nelmio\Alice\PropertyAccess\ReflectionPropertyAccessor

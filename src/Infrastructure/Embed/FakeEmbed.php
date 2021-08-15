@@ -8,19 +8,19 @@ use App\Domain\ValueObject\Link;
 class FakeEmbed implements EmbedInterface
 {
     private const LINK_FIXTURE = [
-        'www.flickr.com/1234' => [
+        'https://www.flickr.com/1234' => [
             'title' => 'bookmark_1 edited',
             'author' => 'Adah edited',
-            'url' => 'www.such-url-update.com',
+            'link' => 'https://www.flickr.com/1234',
             'height' => 25,
             'width' => 49,
             'duration' => 180,
         ],
 
-        'www.vimeo.com/4321' => [
+        'https://www.vimeo.com/4321' => [
             'title' => 'Da bookmark creation',
             'author' => 'new author',
-            'url' => 'www.such-dummy.com',
+            'link' => 'https://www.vimeo.com/4321',
             'height' => 54,
             'width' => 89,
             'duration' => 720,
@@ -38,7 +38,7 @@ class FakeEmbed implements EmbedInterface
 
         return Link::create(
             $content['title'],
-            $content['authorName'],
+            $content['author'],
             $content['width'],
             $content['height'],
             $content['duration'],

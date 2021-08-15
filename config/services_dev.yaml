@@ -3,7 +3,7 @@ imports:
 
 services:
   _defaults:
-    autowire: true      # Automatically injects dependencies in your services.
+    autowire: true
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
   App\Tools\Faker\UuidV4Faker:

@@ -42,13 +42,13 @@ Feature: Bookmark CRUD
     }
     """
     And the JSON nodes should be equal to:
-      | title     | bookmark_1 edited         |
-      | author    | Adah edited               |
-      | createdAt | 2018-06-01T00:00:00+00:00 |
-      | link      | www.flickr.com/1234       |
-      | height    | 25                        |
-      | width     | 49                        |
-      | duration  | 180                       |
+      | title     | bookmark_1 edited           |
+      | author    | Adah edited                 |
+      | createdAt | 2020-06-01T00:00:00+00:00   |
+      | link      | https://www.flickr.com/1234 |
+      | height    | 25                          |
+      | width     | 49                          |
+      | duration  | 180                         |
     Then the response status code should be 200
 
   @post
@@ -62,11 +62,11 @@ Feature: Bookmark CRUD
     }
     """
     And the JSON nodes should be equal to:
-      | title    | Da bookmark creation |
-      | author   | new author           |
-      | link     | www.vimeo.com/4321   |
-      | height   | 54                   |
-      | width    | 89                   |
-      | duration | 720                  |
+      | title    | Da bookmark creation       |
+      | author   | new author                 |
+      | link     | https://www.vimeo.com/4321 |
+      | height   | 54                         |
+      | width    | 89                         |
+      | duration | 720                        |
     Then the response status code should be 201
 

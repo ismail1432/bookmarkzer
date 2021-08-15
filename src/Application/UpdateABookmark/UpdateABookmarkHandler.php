@@ -37,8 +37,8 @@ final class UpdateABookmarkHandler implements MessageHandlerInterface
             $link->getTitle(),
             $link->getAuthor(),
             $url,
-            $link->getWidth(),
             $link->getHeight(),
+            $link->getWidth(),
             BookmarkType::createFromHost($host)->getValue(),
             $command->getTags(),
             $link->getDuration()
