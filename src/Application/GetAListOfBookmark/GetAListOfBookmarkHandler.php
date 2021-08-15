@@ -16,7 +16,7 @@ final class GetAListOfBookmarkHandler implements MessageHandlerInterface
         $this->bookmarkRepository = $bookmarkRepository;
     }
 
-    public function __invoke(GetAListOfBookmark $bookmark)
+    public function __invoke(GetAListOfBookmarkCommand $bookmark)
     {
         return $this->bookmarkRepository->findAll();
     }

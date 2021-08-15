@@ -2,7 +2,7 @@
 
 namespace App\Ports\Rest\Bookmark\GetABookmark;
 
-use App\Application\GetABookmark\GetABookmark as GetABookMarkMessage;
+use App\Application\GetABookmark\GetABookmarkCommand as GetABookMarkMessage;
 use App\Domain\Exception\BookmarkNotFoundException;
 use App\Infrastructure\Transport\SynchronousBusInterface;
 use App\Ports\Rest\Bookmark\BookmarkOutput;

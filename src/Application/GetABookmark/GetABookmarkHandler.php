@@ -17,7 +17,7 @@ final class GetABookmarkHandler implements MessageHandlerInterface
         $this->bookmarkRepository = $bookmarkRepository;
     }
 
-    public function __invoke(GetABookmark $message): Bookmark
+    public function __invoke(GetABookmarkCommand $message): Bookmark
     {
         return $this->bookmarkRepository->getById($message->getBookmarkId());
     }

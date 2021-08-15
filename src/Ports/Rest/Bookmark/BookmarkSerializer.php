@@ -25,9 +25,11 @@ final class BookmarkSerializer implements ContextAwareNormalizerInterface
         /** @var Bookmark $bookmark */
         $data = $this->normalizer->normalize($bookmark, $format, $context);
 
-        $data['href']['self'] = $this->router->generate('bookmark_read', [
+        $data['@id'] = $this->router->generate('bookmark_read', [
             'id' => $bookmark->getId(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
+
+        unset($data['id']);
 
         return $data;
     }
